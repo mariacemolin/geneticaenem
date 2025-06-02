@@ -178,4 +178,21 @@ function verificarResposta(index, div) {
     el.classList.remove("correct", "incorrect");
     el.style.pointerEvents = "none";
     if (i === correta) el.classList.add("correct");
-   
+    else if (i === index) el.classList.add("incorrect");
+  });
+
+  if (index === correta) pontuacao++;
+}
+
+nextBtn.onclick = () => {
+  perguntaAtual++;
+  if (perguntaAtual < perguntas.length) {
+    mostrarPergunta();
+  } else {
+    quizContainer.innerHTML = "<h2>Fim do quiz!</h2>";
+    scoreEl.innerText = `Você acertou ${pontuacao} de ${perguntas.length} perguntas.`;
+    nextBtn.style.display = "none";
+  }
+};
+
+mostrarPergunta();
